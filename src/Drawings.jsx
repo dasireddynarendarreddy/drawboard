@@ -5,9 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import './Drawing.css'
 const Show= lazy(() => import('./Show.jsx'))
 function Drawings() {
   const[data,setdata]=useState([]);
+  const[load,setloader]=useState(true);
   const navigate=useNavigate();
   
   useEffect(()=>{
@@ -24,6 +26,7 @@ function Drawings() {
     const res=await promise.documents
     
     setdata(res)
+    setloader(false)
   
     
   
@@ -46,13 +49,15 @@ function Drawings() {
     
     <>
     <span>{data.length===0?<div className="flex items-center justify-center h-screen">
-      <LazyLoadImage  alt="example image"
+     
+      {/*<LazyLoadImage  alt="example image"
       height={100}
       src="https://static.vecteezy.com/system/resources/previews/000/374/466/original/vector-little-girl-drawing-sun-on-paper.jpg"
       width={200}
       className="rounded-full"
       effect="blur"
-    />
+    />*/}
+    {load?<div class="loader"></div>:""}
     <p>you can view your drawings here!</p>
     </div>:" your drawings"}</span>
     <Suspense fallback={<div>Loading...</div>}>
@@ -70,7 +75,13 @@ function Drawings() {
             </div>
           )
          
-         :""}
+         :<LazyLoadImage  alt="example image"
+         height={100}
+         src="https://static.vecteezy.com/system/resources/previews/000/374/466/original/vector-little-girl-drawing-sun-on-paper.jpg"
+         width={200}
+         className="rounded-full"
+         effect="blur"
+       />}
         
     </div>
     
