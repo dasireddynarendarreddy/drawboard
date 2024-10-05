@@ -9,13 +9,14 @@ import './Drawing.css'
 const Show= lazy(() => import('./Show.jsx'))
 function Drawings() {
   const[data,setdata]=useState([]);
-  const[load,setloader]=useState(true);
+  const[load,setload]=useState();
   const navigate=useNavigate();
   
   useEffect(()=>{
     const get=async()=>{
-           const details=(await account.get()).name
-           //setname(details)
+           const details=(await account.get())
+           setload(true);
+          
       let promise = await databases.listDocuments(
          import.meta.env.VITE_APPWRITE_DATABASEID_ID,
          import.meta.env.VITE_APPWRITE_COLLECTION_ID1,
@@ -25,9 +26,9 @@ function Drawings() {
     );
     const res=await promise.documents
     
-    setdata(res)
-    setloader(false)
-  
+    setdata(res);
+    setload(false)
+   
     
   
    
@@ -45,25 +46,15 @@ function Drawings() {
    await databases.deleteDocument(res.$databaseId, res.$collectionId, res.$id)
    navigate(0);
   }
+  
   return (
     
     <>
-    <span>{data.length===0?<div className="flex items-center justify-center h-screen">
-     
-      {/*<LazyLoadImage  alt="example image"
-      height={100}
-      src="https://static.vecteezy.com/system/resources/previews/000/374/466/original/vector-little-girl-drawing-sun-on-paper.jpg"
-      width={200}
-      className="rounded-full"
-      effect="blur"
-    />*/}
-    {load?<div class="loader"></div>:""}
-    <p>you can view your drawings here!</p>
-    </div>:" your drawings"}</span>
-    <Suspense fallback={<div>Loading...</div>}>
+    
+    <Suspense fallback={<div className="loader"></div>}>
      <div className='flex flex-wrap gap-2 flex-row p-2'>
       
-         {
+         {load?"loading...":
           
           data.length>0?data.map((res,index)=>
           <div key={index}>
@@ -73,19 +64,18 @@ function Drawings() {
                <span>{new Date(res.$createdAt).toUTCString()}</span>
             </div>
             </div>
+
           )
+        
          
-         :<LazyLoadImage  alt="example image"
-         height={100}
-         src="https://static.vecteezy.com/system/resources/previews/000/374/466/original/vector-little-girl-drawing-sun-on-paper.jpg"
-         width={200}
-         className="rounded-full"
-         effect="blur"
-       />}
+         :<p>you have no drawings</p>}
+         
         
     </div>
     
+    
     </Suspense>
+    
     </>
   )
 }

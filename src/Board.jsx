@@ -124,15 +124,16 @@ export default function Board({name}) {
         </Select>
       </FormControl>
     </Box>:""}*/}
+    <div className="bg-blue-500 w-4 h-4 border-2 border-red-500 sticky top-20 left-40"></div>
       <ReactSketchCanvas
         width="100%"
         height="1500px"
         canvasColor="transparent"
         strokeColor={color}
         onStroke={getPaths}
-      
+        
         ref={canvasRef}
-        className="cursor-pointer"
+        
         
         />
         <button className="bg-blue-500 p-2 rounded-md" onClick={save}>save</button>
