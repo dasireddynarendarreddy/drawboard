@@ -14,7 +14,7 @@ function Login() {
     try {
       if (!mail || !password || !name) {
         setError('All fields are required');
-        console.log('All fields are required');
+        //console.log('All fields are required');
       } 
        else{
         //const mail=await account.get().email
@@ -53,7 +53,7 @@ function Login() {
   const register = async () => {
     if (!mail || !password || !name) {
       setError('All fields are required');
-      console.log('All fields are required');
+      //console.log('All fields are required');
     } else {
       try {
         await account.create(ID.unique(), mail, password, name);

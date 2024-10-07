@@ -12,7 +12,7 @@ function Logout() {
     const get=async()=>{
     try{
       const res=await account.get();
-      console.log(res)
+      //console.log(res)
      
       if(res.name)
       {
@@ -35,7 +35,7 @@ function Logout() {
      ]);
      setdraw(res.total)
 
-     console.log(res.total)
+     //console.log(res.total)
 }
 get();
   

@@ -1,9 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+
 import UndoIcon from '@mui/icons-material/Undo';
 import RedoIcon from '@mui/icons-material/Redo';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
@@ -64,7 +60,7 @@ export default function Board({ name }) {
         toast.error("You have to make changes and save!");
       }
     } catch (e) {
-      console.log(e);
+      //console.log(e);
       toast.error("You have to create an account to save or login :)");
     }
   };
@@ -79,9 +75,9 @@ export default function Board({ name }) {
         top: scrollContainerRef.current.scrollHeight,
         behavior: 'smooth'
       });
-      console.log("Scrolling to bottom");
+      //console.log("Scrolling to bottom");
     } else {
-      console.log("scrollContainerRef is null");
+      //console.log("scrollContainerRef is null");
     }
   };
 
@@ -91,9 +87,9 @@ export default function Board({ name }) {
         top: 0,
         behavior: 'smooth'
       });
-      console.log("Scrolling to top");
+      //console.log("Scrolling to top");
     } else {
-      console.log("scrollContainerRef is null");
+      //console.log("scrollContainerRef is null");
     }
   };
 

@@ -4,7 +4,7 @@ import { Query } from 'appwrite'
 import { useNavigate } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 import './Drawing.css'
 const Show= lazy(() => import('./Show.jsx'))
 function Drawings() {
