@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-import './Drawing.css'
+
 const Show= lazy(() => import('./Show.jsx'))
 function Drawings() {
   const[data,setdata]=useState([]);
@@ -51,7 +51,7 @@ function Drawings() {
     
     <>
     
-    <Suspense fallback={<div className="loader"></div>}>
+    <Suspense fallback={<div>loading...</div>}>
      <div className='flex flex-wrap gap-2 flex-row p-2'>
       
          {load?"loading...":
