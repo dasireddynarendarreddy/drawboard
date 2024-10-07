@@ -122,11 +122,12 @@ export default function Board({ name }) {
           ref={canvasRef}
           className="cursor-pointer"
         />
-        <div className="absolute right-2 top-2 bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center cursor-pointer" onClick={scrollToTop}>
-          ↑
-        </div>
+       
         <div className="absolute right-2 bottom-2 bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center cursor-pointer" onClick={scrollToBottom}>
           ↓
+        </div>
+        <div className="absolute right-2 top-2 bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center cursor-pointer" onClick={scrollToTop}>
+          ↑
         </div>
       </div>
       <button className="bg-blue-500 p-2 rounded-md mt-4" onClick={save}>save</button>

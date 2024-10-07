@@ -17,11 +17,32 @@ function Login() {
         console.log('All fields are required');
       } 
        else{
-      toast.success("you have logged in!!")
-      await account.createEmailPasswordSession(mail,password);
-      navigate(0);
-            navigate("/board",{replace:true})
-       }
+        //const mail=await account.get().email
+        try{
+        const res=await account.createEmailPasswordSession(mail,password);
+        }
+        catch(e)
+        {
+         toast.error(e.message+"createAccount")
+        }
+         /*if(mail===undefined)
+         {
+          const response=await account.create(ID.unique(), mail, password, name);
+          console.log(response);
+         }
+         else{
+            toast.success("you have logged in!!")
+                   
+              
+                navigate(0);
+                navigate("/board",{replace:true})
+         }*/
+              
+               
+            }
+            
+      
+       
     } catch (err) {
      
       toast.error(e.message)
@@ -90,7 +111,7 @@ function Login() {
               className="rounded-lg bg-black text-white w-fit p-2 cursor-pointer"
               onClick={register}
             >
-              SignUp
+              createAccount
             </button>
           </div>
         

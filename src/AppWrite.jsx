@@ -13,5 +13,4 @@ export const account = new Account(client);
 
 
 
-
 export { ID,Permission } from "appwrite";

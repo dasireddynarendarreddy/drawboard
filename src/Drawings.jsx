@@ -58,7 +58,7 @@ function Drawings() {
           
           data.length>0?data.map((res,index)=>
           <div key={index}>
-              <DeleteIcon onClick={()=>deleteNotes(res)} className='cursor-pointer'/>
+              <DeleteIcon onClick={()=>deleteNotes(res)} className='cursor-pointer hover:bg-red-500 rounded-lg'/>
              <div onClick={()=>goToBoard(res)} key={index}>
             <Show data={res} key={index} />
                <span>{new Date(res.$createdAt).toUTCString()}</span>
